@@ -1,0 +1,170 @@
+net
+{
+	propagationenginegenerator1791944048146838126L = "edu.ucla.belief.approx.BeliefPropagationSettings@7f53ee15";
+	recoveryenginegenerator6944530267470113528l = "edu.ucla.util.SettingsImpl@5f33e601";
+	node_size = (130 55);
+}
+
+node credito
+{
+	states = ("sim" "nao" );
+	position = (243 -336);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable7";
+	label = "Conceder credito";
+	DSLxSUBMODEL = "Root Submodel";
+	diagnosistype = "AUXILIARY";
+}
+node idade
+{
+	states = ("jovem" "adulto" "idoso" );
+	position = (364 -73);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable1";
+	label = "Idade";
+	DSLxSUBMODEL = "Root Submodel";
+	diagnosistype = "AUXILIARY";
+}
+node historico
+{
+	states = ("inaceitavel" "aceitavel" "excelente" );
+	position = (163 -75);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable0";
+	label = "Historico de pagamento";
+	DSLxSUBMODEL = "Root Submodel";
+	diagnosistype = "AUXILIARY";
+}
+node renda_futura
+{
+	states = ("baixa" "media" "alta" );
+	position = (464 -187);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable6";
+	label = "Renda futura";
+	DSLxSUBMODEL = "Root Submodel";
+	diagnosistype = "AUXILIARY";
+}
+node dividas
+{
+	states = ("baixa" "media" "alta" );
+	position = (9 -154);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable3";
+	label = "Dividas e rendimentos";
+	DSLxSUBMODEL = "Root Submodel";
+	diagnosistype = "AUXILIARY";
+}
+node confiavel
+{
+	states = ("sim" "nao" );
+	position = (243 -182);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable2";
+	label = "Confiavel";
+	DSLxSUBMODEL = "Root Submodel";
+	diagnosistype = "AUXILIARY";
+}
+node renda
+{
+	states = ("baixa" "media" "alta" );
+	position = (724 -79);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable4";
+	label = "Renda atual";
+	DSLxSUBMODEL = "Root Submodel";
+	diagnosistype = "AUXILIARY";
+}
+node ativos
+{
+	states = ("baixo" "medio" "alto" );
+	position = (533 -76);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable5";
+	label = "Valor dos ativos";
+	DSLxSUBMODEL = "Root Submodel";
+	diagnosistype = "AUXILIARY";
+}
+potential ( credito | confiavel renda_futura dividas )
+{
+	data = ((((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)))
+		(((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	))));
+}
+potential ( idade | )
+{
+	data = (	0.5	0.5	0.0	);
+}
+potential ( historico | idade dividas )
+{
+	data = (((	0.5	0.5	0.0	)
+		(	0.5	0.5	0.0	)
+		(	0.5	0.5	0.0	))
+		((	0.5	0.5	0.0	)
+		(	0.5	0.5	0.0	)
+		(	0.5	0.5	0.0	))
+		((	0.5	0.5	0.0	)
+		(	0.5	0.5	0.0	)
+		(	0.5	0.5	0.0	)));
+}
+potential ( renda_futura | renda ativos )
+{
+	data = (((	0.5	0.5	0.0	)
+		(	0.5	0.5	0.0	)
+		(	0.5	0.5	0.0	))
+		((	0.5	0.5	0.0	)
+		(	0.5	0.5	0.0	)
+		(	0.5	0.5	0.0	))
+		((	0.5	0.5	0.0	)
+		(	0.5	0.5	0.0	)
+		(	0.5	0.5	0.0	)));
+}
+potential ( dividas | )
+{
+	data = (	0.5	0.5	0.0	);
+}
+potential ( confiavel | historico idade )
+{
+	data = (((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	))
+		((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)));
+}
+potential ( renda | )
+{
+	data = (	0.5	0.5	0.0	);
+}
+potential ( ativos | renda )
+{
+	data = ((	0.5	0.5	0.0	)
+		(	0.5	0.5	0.0	)
+		(	0.5	0.5	0.0	));
+}
